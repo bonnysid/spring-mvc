@@ -30,13 +30,25 @@ public class UsersController {
     }
 
     @GetMapping("/new")
-    public String save(@ModelAttribute("user") User user) {
+    public String getFormForCreate(@ModelAttribute("user") User user) {
         return "users/new";
     }
 
     @PostMapping()
     public String create(@ModelAttribute("user") User user) {
         userDAO.insert(user);
+        return "redirect:/users";
+    }
+
+    @GetMapping("/{id}/update")
+    public String getFormForCreateUpdate(@PathVariable("id") int id, Model model) {
+        model.addAttribute("user", userDAO.get(id));
+        return "users/update";
+    }
+
+    @PatchMapping("/{id}")
+    public String update(@ModelAttribute("user") User user, @PathVariable("id") int id) {
+        userDAO.update(id, user);
         return "redirect:/users";
     }
 

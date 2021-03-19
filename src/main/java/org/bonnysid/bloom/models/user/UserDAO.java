@@ -35,4 +35,8 @@ public class UserDAO {
     public void delete(int id) {
         users.removeIf(p -> p.getID() == id);
     }
+
+    public void update(int id, User user) {
+        users.get(id).setLogin(user.getLogin());
+    }
 }
