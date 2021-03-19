@@ -19,6 +19,18 @@ public class User {
     @Min(value = 0, message = "Age cannot be less than 0")
     private int age;
 
+    @NotEmpty(message = "Password cannot be empty")
+    @Size(min = 6, max = 50, message = "Password length should be in 6-50")
+    private String password;
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public User() {}
 
     public String getEmail() {
@@ -70,6 +82,9 @@ public class User {
         return "User{" +
                 "id=" + id +
                 ", login='" + login + '\'' +
+                ", email='" + email + '\'' +
+                ", age=" + age +
+                ", password='" + password + '\'' +
                 '}';
     }
 }

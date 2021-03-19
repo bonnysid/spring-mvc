@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Create User</title>
+    <title>Update User</title>
 </head>
 <body>
 <form th:method="PATCH" th:action="@{/users/{id}(id = ${user.getID()})}" th:object="${user}">
@@ -17,6 +17,10 @@
     <label for="email">Enter email: </label>
     <input type="text" th:field="*{email}" id="email"/>
     <div style="color:red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</div>
+    <br/>
+    <label for="password">Enter password: </label>
+    <input type="password" th:field="*{password}" id="password"/>
+    <div style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">password Error</div>
     <br/>
 
     <input type="submit" value="Update"/>
