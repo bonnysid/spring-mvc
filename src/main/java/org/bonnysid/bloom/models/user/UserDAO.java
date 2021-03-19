@@ -19,11 +19,16 @@ public class UserDAO {
         users.add(new User(COUNT_USERS++, "geek"));
     }
 
-    public List<User> getUsers() {
+    public List<User> get() {
         return users;
     }
 
-    public User getUserById(int id) {
+    public User get(int id) {
         return users.stream().filter(u -> u.getID() == id).findAny().orElse(null);
+    }
+
+    public void insert(User user) {
+        user.setId(COUNT_USERS++);
+        users.add(user);
     }
 }
