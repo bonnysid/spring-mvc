@@ -1,17 +1,55 @@
 package org.bonnysid.bloom.models.user;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
 public class User {
     private int id;
+
+    @NotEmpty(message = "Login is required")
+    @Size(min = 2, max = 30, message = "Login length should be between 2-30")
     private String login;
 
+    @NotEmpty(message = "Email is required")
+    @Email(message = "Email should be incorrect")
+    private String email;
+
+    @Min(value = 0, message = "Age cannot be less than 0")
+    private int age;
+
     public User() {}
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
 
     public User(int id, String login) {
         this.id = id;
         this.login = login;
     }
 
-    public void setId(int id) {
+    public User(int id, String login, String email, int age) {
+        this.id = id;
+        this.login = login;
+        this.email = email;
+        this.age = age;
+    }
+
+    public void setID(int id) {
         this.id = id;
     }
 

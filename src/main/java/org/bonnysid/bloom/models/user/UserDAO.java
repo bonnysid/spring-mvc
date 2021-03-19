@@ -11,12 +11,12 @@ public class UserDAO {
     private List<User> users = new ArrayList<>();
 
     {
-        users.add(new User(COUNT_USERS++, "bonnysid"));
-        users.add(new User(COUNT_USERS++, "midoran"));
-        users.add(new User(COUNT_USERS++, "yanixxxs"));
-        users.add(new User(COUNT_USERS++, "jojo"));
-        users.add(new User(COUNT_USERS++, "custom"));
-        users.add(new User(COUNT_USERS++, "geek"));
+        users.add(new User(COUNT_USERS++, "bonnysid", "example@email.com", 18));
+        users.add(new User(COUNT_USERS++, "midoran", "example@email.com", 18));
+        users.add(new User(COUNT_USERS++, "yanixxxs", "example@email.com", 18));
+        users.add(new User(COUNT_USERS++, "jojo", "example@email.com", 18));
+        users.add(new User(COUNT_USERS++, "custom", "example@email.com", 18));
+        users.add(new User(COUNT_USERS++, "geek", "example@email.com", 18));
     }
 
     public List<User> get() {
@@ -28,7 +28,7 @@ public class UserDAO {
     }
 
     public void insert(User user) {
-        user.setId(COUNT_USERS++);
+        user.setID(COUNT_USERS++);
         users.add(user);
     }
 
@@ -36,7 +36,10 @@ public class UserDAO {
         users.removeIf(p -> p.getID() == id);
     }
 
-    public void update(int id, User user) {
-        users.get(id).setLogin(user.getLogin());
+    public void update(int id, User newDataUser) {
+        User user = get(id);
+        user.setLogin(newDataUser.getLogin());
+        user.setAge(newDataUser.getAge());
+        user.setEmail(newDataUser.getEmail());
     }
 }

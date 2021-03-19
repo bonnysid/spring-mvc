@@ -6,8 +6,19 @@
 </head>
 <body>
 <form th:method="PATCH" th:action="@{/users/{id}(id = ${user.getID()})}" th:object="${user}">
-    <label for="login">Login:</label>
-    <input type="text" id="login" th:field="*{login}"/>
+    <label for="login">Enter login: </label>
+    <input type="text" th:field="*{login}" id="login"/>
+    <div style="color:red" th:if="${#fields.hasErrors('login')}" th:errors="*{login}">Login Error</div>
+    <br/>
+    <label for="age">Enter age: </label>
+    <input type="text" th:field="*{age}" id="age"/>
+    <div style="color:red" th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Age Error</div>
+    <br/>
+    <label for="email">Enter email: </label>
+    <input type="text" th:field="*{email}" id="email"/>
+    <div style="color:red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</div>
+    <br/>
+
     <input type="submit" value="Update"/>
 </form>
 </body>
