@@ -5,10 +5,22 @@
     <title th:text="${user.getLogin()}">Title</title>
 </head>
 <body>
-    <p th:text="${user.getLogin()}"></p>
-    <p th:text="${user.getID()}"></p>
+    <div>
+        <span>ID: </span><span th:text="${user.getId()}"></span>
+    </div>
+    <div>
+        <span>Login: </span><span th:text="${user.getLogin()}"></span>
+    </div>
+    <div>
+        <span>Email: </span><span th:text="${user.getEmail()}"></span>
+    </div>
+    <div>
+        <span>Age: </span><span th:text="${user.getAge()}"></span>
+    </div>
 
-    <a th:href="@{/users/{id}/update(id = ${user.getID()})}">Edit</a>
-    <form th:method="DELETE" th:action="@{/users/{id}(id = ${user.getID()})}"><input type="submit" value="Delete"></form>
+
+
+    <a th:href="@{/users/{id}/update(id = ${user.getId()})}">Edit</a>
+    <form th:method="DELETE" th:action="@{/users/{id}(id = ${user.getId()})}"><input type="submit" value="Delete"></form>
 </body>
 </html>
