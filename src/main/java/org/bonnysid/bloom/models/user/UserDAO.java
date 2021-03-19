@@ -31,4 +31,8 @@ public class UserDAO {
         user.setId(COUNT_USERS++);
         users.add(user);
     }
+
+    public void delete(int id) {
+        users.removeIf(p -> p.getID() == id);
+    }
 }
